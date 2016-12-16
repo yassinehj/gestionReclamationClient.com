@@ -1,0 +1,84 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+{% if error %}
+    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+{% endif %}
+      <a class="hiddenanchor" id="signup"></a>
+      <a class="hiddenanchor" id="signin"></a>
+<div class="login_wrapper">
+        <div class="animate form login_form">
+          <section class="login_content">
+            <form action="{{ path("fos_user_security_check") }}" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                <h1>Login Form</h1>
+              <div>
+                  <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
+                  <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control" placeholder="Username" />
+              </div>
+              <div>
+                  <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
+                  <input type="password" id="password" name="_password" required="required" class="form-control" placeholder="Password" />
+              </div>
+              <div>
+    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" class="btn btn-default submit" />
+
+{#                  <a class="btn btn-default submit" href="index.html">Log in</a>#}
+                <a class="reset_pass" href="#">Lost your password?</a>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">New to site?
+                  <a href="#signup" class="to_register"> Create Account </a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                <img src="{{asset('bundles/GrcUser/images/images.jpg')}}" alt="..." />
+				</div>
+              </div>
+            </form>
+          </section>
+        </div>
+
+        <div id="register" class="animate form registration_form">
+          <section class="login_content">
+            <form>
+              <h1>Create Account</h1>
+              <div>
+                <input type="text" class="form-control" placeholder="Username" required="" />
+              </div>
+              <div>
+                <input type="email" class="form-control" placeholder="Email" required="" />
+              </div>
+              <div>
+                <input type="password" class="form-control" placeholder="Password" required="" />
+              </div>
+              <div>
+                <a class="btn btn-default submit" href="">Submit</a>
+              </div>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">Already a member ?
+                  <a href="#signin" class="to_register"> Log in </a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                    <img src="{{asset('bundles/GrcUser/images/images.jpg')}}" alt="..." />
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+      </div>
+
+{% endblock fos_user_content %}

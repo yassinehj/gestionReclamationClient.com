@@ -1,0 +1,27 @@
+
+grc_user_list:
+    path:     /index
+    defaults: { _controller: GrcUserBundle:User:index }
+#admin routing
+grc_admin_manager_list:
+    path:     /ListManager
+    defaults: { _controller: GrcUserBundle:Admin:ListManager }
+grc_admin_manager_ajout:
+    path: /ajoutManager
+    defaults: { _controller: GrcUserBundle:Admin:AjoutManager }
+grc_admin_manager_update:
+    path: /updateManager/{id}
+    defaults: { _controller: GrcUserBundle:Admin:updateManager }
+grc_admin_manager_delete:
+    path: /deleteManager/{id}
+    defaults: { _controller: GrcUserBundle:Admin:deleteManager }
+#manager routing
+grc_manager_collaborateur_list:
+    path:     /ListCollaborateur
+    defaults: { _controller: GrcUserBundle:Manager:ListCollaborateur }
+grc_manager_collaborateur_ajout:
+    path: /ajoutCollaborateur
+    defaults: { _controller: GrcUserBundle:Manager:AjoutCollaborateur }
+grc_manager_collaborateur_delete:
+    path: /deleteCollaborateur/{id}
+    defaults: { _controller: GrcUserBundle:Manager:deleteCollaborateur }

@@ -1,0 +1,195 @@
+{% extends "GrcUserBundle::base.html.twig" %}
+ {% block body %}
+     {{parent()}} 
+ {% endblock %}
+     {% block admin %}
+         <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+{#                  <div class="x_title">                      #}
+                      <div class="page-title">
+              <div class="title_left">
+                  <div class="col-md-5 col-sm-5 col-xs-12 ">
+                <a href="{{path('grc_compte_ajout')}}"><button type="button" value="Ajouter" class="btn btn-primary"> Ajouter  <i class="fa fa-plus-square" /></i></button></a>                
+                  </div>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+{#                  </div> #}
+              </div>
+                  </div>
+                </div>
+      
+<div class="col-md-12 col-sm-12 col-xs-12">
+            
+    
+
+              <div class="x_panel" style="">
+                  <div class="x_title">
+                    <h2>Plus Table Design</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      
+                      
+                      <li><a data-toggle="modal" data-target="#myModal"><i class="fa fa-plus-square"></i></a>
+                      
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    {#<p class="text-muted font-13 m-b-30">
+                      DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
+                    </p>#}
+                    <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
+                      <thead>
+                        <tr>
+                          <th><input type="checkbox" id="check-all" class="flat"></th>
+                          <th>ID</th>
+                          <th>Username</th>
+                          <th>email</th>
+                          <th>Roles</th>
+                        
+                        </tr>
+                      </thead>
+
+
+                      <tbody>
+                        
+                        
+                        {% for com in comptes %}
+                        <tr>
+                          <td><input type="checkbox" class="flat" name="table_records"></td>
+                          <td>{{ com.id }}</td>
+                          <td>{{ com.username}}</td>
+                          <td>{{ com.email }}</td>
+                          <td>{{ com.roles[0] }}</td>
+                          <td>
+                              
+                         
+                                     <button class="btn bg-light-blue " data-toggle="modal" data-target="#addUserForm"><i class="fa fa-eye"></i></button>
+                              
+			
+                  <a href="{{path("grc_compte_update", {'id':com.id} )}}"><button class="btn bg-green "><i class="fa fa-edit"></i> </button></a>
+                  <a href="{{path("grc_compte_delete", {'id':com.id} )}}"><button class="btn bg-red " ><i class="fa fa-trash-o"></i> </button></a>
+                 
+                               	  </td>
+                        </tr>
+                        {% endfor %}
+                        
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                       {#<form action='' method='post' align='center'>
+       {{ form_widget(form) }}
+            <input type='submit' value='save'/>
+        </form>#}
+    <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Manager</h4>
+      </div>
+      <div class="modal-body">
+{#      page content#}
+
+          <div class="">
+            
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                  
+                  <div class="x_content">
+
+                    <form class="form-horizontal form-label-left" novalidate>
+
+
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="form_roles" name="form[roles]" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2"  required="required" type="text">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Confirm Email <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="email" id="email2" name="confirm_email" data-validate-linked="email" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                     
+                      
+                      
+                      <div class="item form-group">
+                        <label for="password" class="control-label col-md-3">Password</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="password" type="password" name="password" data-validate-length="6,8" class="form-control col-md-7 col-xs-12" required="required">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label for="password2" class="control-label col-md-3 col-sm-3 col-xs-12">Repeat Password</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input id="password2" type="password" name="password2" data-validate-linked="password" class="form-control col-md-7 col-xs-12" required="required">
+                        </div>
+                      </div>
+                      <div class="item form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">Telephone <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                          <input type="tel" id="telephone" name="phone" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      
+                      <div class="ln_solid"></div>
+                      <div class="form-group">
+                        <div class="col-md-6 col-md-offset-3">
+                          <button type="submit" class="btn btn-primary">Cancel</button>
+                          <button id="send" type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div> 
+          </div> 
+       
+        
+{#end page content #}
+          
+      </div>
+      {#<div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>#}
+    </div>
+  </div>
+</div>
+
+</div>
+  <!-- Button trigger modal -->
+
+
+     {% endblock %}
+ 

@@ -1,0 +1,20 @@
+{% extends "::base.html.twig" %}
+{% block body %}
+<table>
+    <tr>
+       <td>Id</td>
+       <td>Nom</td>
+       <td>Email</td>
+       
+    </tr>
+    {% for com in comptes %}
+        <tr>
+            <td>{{ com.id }} </td>
+            <td>{{ com.username}}</td>
+            <td>{{ com.email }} </td>
+        </tr>    
+           
+    {% endfor %}
+    
+</table>
+{% endblock %}

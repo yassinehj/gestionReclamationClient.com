@@ -1,0 +1,7 @@
+{% extends "GrcUserBundle::base.html.twig" %}
+
+{% block fos_user_content %}
+    {% block admin %}
+        {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+    {% endblock %}
+{% endblock fos_user_content %}
