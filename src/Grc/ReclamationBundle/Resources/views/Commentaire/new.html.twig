@@ -1,0 +1,17 @@
+{% extends "GrcUserBundle::base.html.twig" %}
+ {% block body %}
+     {{parent()}} 
+ {% endblock %}
+     {% block admin %}
+  
+    {{ form(form) }}
+
+        <ul>
+    <li>
+        <a href="{{ path('commentaire') }}">
+           Retour
+        </a>
+    </li>
+</ul>
+
+        {% endblock %}

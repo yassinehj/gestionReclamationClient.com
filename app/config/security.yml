@@ -7,8 +7,8 @@ security:
         ROLE_MANAGER: ROLE_MANAGER
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: ROLE_ADMIN
-        ROLE_CLIENT: ROLE_USER
-        ROLE_COLLABORATEUR: ROLE_USER
+        ROLE_CLIENT: ROLE_MANAGER
+        ROLE_COLLABORATEUR: ROLE_MANAGER
 
     providers:
         fos_userbundle:
@@ -19,7 +19,9 @@ security:
             form_login:
                 provider: fos_userbundle
                 csrf_provider: form.csrf_provider
-                default_target_path: /ListManager
+                login_path: /login
+                check_path: /login_check
+                success_handler: redirect.after.login
                 login_path: /
                 # if you are using Symfony < 2.8, use the following config instead:
                 # csrf_provider: form.csrf_provider
@@ -39,4 +41,6 @@ security:
         - { path: ^/delete, role: ROLE_ADMIN }
         - { path: ^/ListCollaborateur, role: ROLE_MANAGER }
         - { path: ^/deleteCollaborateur, role: ROLE_MANAGER }
-
+        - { path: ^/reclamation, role: ROLE_MANAGER }
+        - { path: ^/ajoutSujet, role: ROLE_CLIENT }
+     

@@ -1,0 +1,34 @@
+
+    <h1>Commentaireaire</h1>
+
+    <table border="0">
+        <tbody>
+            
+            <tr>
+                <th>Utilisateur</th>
+                <th>commentaire</th>
+               <th>Crée le </th> 
+            </tr>
+            <tr>
+                <td>{{ entity.user }}</td>
+                <td>{{ entity.comment }}</td>
+                   <td>{{ entity.created|date('Y-m-d H:i:s') }}</td>
+            </tr>
+           
+        </tbody>
+    </table>
+
+        <ul>
+    <li>
+        <a href="{{ path('comment') }}">
+            Retour
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('comment_edit', { 'id': entity.id }) }}">
+            Modifier
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+

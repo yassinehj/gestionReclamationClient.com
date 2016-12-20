@@ -47,7 +47,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2>Manager</h2>
                
               </div>
             </div>
@@ -61,7 +61,28 @@
                 <h3>Manager</h3>
                 <ul class="nav side-menu">
                     <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Profil </a></li>
-                  <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Gestion Collaboratteur </a></li>
+                     <li><a><i class="fa fa-home"></i> Gestion collaborateurs <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{path('grc_manager_collaborateur_list')}}">Liste des collaborateurs</a></li>
+                      <li><a href="{{path('grc_manager_collaborateur_ajout')}}">Ajouter collaborateur</a></li>
+                      
+                    </ul>
+                  </li> 
+                  <li><a><i class="fa fa-home"></i> Gestion clients <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{path('grc_manager_collaborateur_list')}}">Liste des clients</a></li>
+                      <li><a href="{{path('grc_manager_collaborateur_ajout')}}">Ajouter client</a></li>
+                      
+                    </ul>
+                  </li> 
+                    <li><a><i class="fa fa-home"></i> Gestion reclamation <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="{{path('grc_reclamation_liste')}}">Reclamation reçu</a></li>
+                      <li><a href="{{path('grc_reclamation_liste_ejecter')}}">Reclamation ejectée</a></li>
+               
+                     <li><a href="{{path('grc_reclamation_liste_terminer')}}">Reclamation terminée</a></li>
+                    </ul>
+                  </li>                
                 </ul>
               </div>
             </div>

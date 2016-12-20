@@ -1,6 +1,10 @@
 grc_user:
     resource: "@GrcUserBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /User
+grc_reclamation:
+    resource: "@GrcReclamationBundle/Resources/config/routing.yml"
+    prefix:   /reclamation    
+    
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 

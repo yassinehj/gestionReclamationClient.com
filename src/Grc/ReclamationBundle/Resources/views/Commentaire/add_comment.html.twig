@@ -1,0 +1,27 @@
+{% extends "GrcUserBundle::base.html.twig" %}
+ {% block body %}
+     {{parent()}} 
+ {% endblock %}
+     {% block admin %}
+  
+  <form action="" method="post" {{form_enctype(form) }}>
+         
+       
+                        <font color="#0fbcfd"  >user: </font>{{ form_widget(Form.user) }}
+                                <font color="#0fbcfd"  >comment:</font>
+                                {{ form_widget(Form.commentaire) }} 
+         
+  <input type="submit" value="Ajouter" />
+   {{ form_rest(Form) }}
+  
+   
+</form> 
+       </div>
+ 
+    <font color="#7CF0F2"  > <a href="{{ path('grc_reclamation_liste') }}">
+         
+           Retour
+           
+        </a> </font>
+
+        {% endblock %}

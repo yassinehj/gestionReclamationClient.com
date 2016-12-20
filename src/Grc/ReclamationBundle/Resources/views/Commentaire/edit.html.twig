@@ -1,0 +1,13 @@
+
+<p ><span style="font-family:Helvetica;font-size:22px;font-style:italic;font-weight:bold;text-decoration:blink;text-transform:capitalize;font-variant:small-caps;color:00FFFF;"> Modifier votre commentaire</span>
+</p>
+    {{ form(edit_form) }}
+
+        <ul>
+    <li>
+        <a href="{{ path('comment') }}">
+            Retour
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>

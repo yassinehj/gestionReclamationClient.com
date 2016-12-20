@@ -1,0 +1,82 @@
+grc_reclamation_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: GrcReclamationBundle:Default:index }
+grc_reclamation_liste:
+    pattern:  /listeSujet
+    defaults: { _controller: GrcReclamationBundle:Reclamation:list}
+grc_reclamation_liste_ejecter:
+    pattern:  /listejecter
+    defaults: { _controller: GrcReclamationBundle:Reclamation:listejecter}
+grc_reclamation_liste_terminer:
+    pattern:  /listterminer
+    defaults: { _controller: GrcReclamationBundle:Reclamation:listterminer}
+grc_reclamation_liste_cour:
+    pattern:  /listecour
+    defaults: { _controller: GrcReclamationBundle:Collaborateur:listecour}
+grc_collaborateur_liste:
+    pattern:  /listeSujetaffecté
+    defaults: { _controller: GrcReclamationBundle:Collaborateur:list}
+reclamation_ajoutSujet:
+    path:     /ajoutSujet
+    defaults: { _controller: GrcReclamationBundle:Reclamation:ajout }  
+reclamation_updateSujet:
+    path:     /updateSujet/{id}
+    defaults: { _controller: GrcReclamationBundle:Reclamation:update } 
+reclamation_updatecloturer:
+    path:     /updatecloturer/{id}
+    defaults: { _controller: GrcReclamationBundle:Reclamation:updatecloturer }
+reclamation_ejecter:
+    path:     /ejecter/{id}
+    defaults: { _controller: GrcReclamationBundle:Collaborateur:update }
+reclamation_terminer:
+    path:     /terminer/{id}
+    defaults: { _controller: GrcReclamationBundle:Collaborateur:updateterminer }
+reclamation_showSujet:
+    path:     /{id}/Sujetshow
+    defaults: { _controller: GrcReclamationBundle:Reclamation:show }
+reclamation_showSujetterminer:
+    path:     /{id}/Sujetshowterminer
+    defaults: { _controller: GrcReclamationBundle:Reclamation:showterminer }
+reclamation_showSujet_cour:
+    path:     /{id}/Sujetshowcour
+    defaults: { _controller: GrcReclamationBundle:Collaborateur:showcour }
+reclamation_showSujet_affecter:
+    path:     /{id}/Sujetshowaffecter
+    defaults: { _controller: GrcReclamationBundle:Collaborateur:show }
+commentaire:
+    path:     /index
+    defaults: { _controller: "GrcReclamationBundle:Commentaire:index" }
+
+commentaire_show:
+    path:     /{id}/show
+    defaults: { _controller: "GrcReclamationBundle:Commentaire:show" }
+
+commentaire_new:
+    path:     /new
+    defaults: { _controller: "GrcReclamationBundle:Commentaire:new" }
+
+commentaire_create:
+    path:     /{id}/create
+    defaults: { _controller: "GrcReclamationBundle:Commentaire:create" }
+    methods:  POST
+    
+commentaire_ajouter:
+    path:     /{id}/ajouter
+    defaults: { _controller: "GrcReclamationBundle:Commentaire:ajout" }
+
+commentaire_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "GrcReclamationBundle:Commentaire:edit" }
+
+commentaire_update:
+    path:     /{id}/update
+    defaults: { _controller: "GrcReclamationBundle:Commentaire:update" }
+    methods:  [POST, PUT]
+
+commentaire_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "GrcReclamationBundle:Commentaire:suppression" }
+  
+commentaire:
+    path:     /index
+    defaults: { _controller: "GrcReclamationBundle:Commentaire:index" }

@@ -1,0 +1,33 @@
+{% extends "GrcUserBundle::template_client.html.twig" %}
+ {% block body %}
+     {{parent()}} 
+ {% endblock %}
+     {% block admin %}
+  
+  <form action="" method="post" {{form_enctype(Form) }}>
+         
+       
+                        <font color="#0fbcfd"  >Sujet: </font>{{ form_widget(Form.sujet) }}
+                                <font color="#0fbcfd"  >Etat:</font>
+                                {{ form_widget(Form.titre) }} 
+                                <font color="#0fbcfd"  >Utilisateur:</font></td>
+                                  {{ form_widget(Form.utilisateur) }}
+                          <font color="#0fbcfd"  >Reclamation:</font>
+        {{ form_widget(Form.reclamation) }}
+        
+       
+
+  <input type="submit" value="Ajouter" />
+   {{ form_rest(Form) }}
+  
+   
+</form> 
+       </div>
+ 
+    <font color="#7CF0F2"  > <a href="{{ path('grc_reclamation_liste') }}">
+         
+           Retour
+           
+        </a> </font>
+
+        {% endblock %}

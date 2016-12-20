@@ -1,0 +1,42 @@
+ <p ><span style="font-family:Helvetica;font-size:22px;font-style:italic;font-weight:bold;text-decoration:blink;text-transform:capitalize;font-variant:small-caps;color:#7CF0F2;"> Liste des commentaires </span>
+</p>
+
+  
+    <table border="0" >
+        <tr>
+            <th bgcolor="#7CF0F2">Utilisateur</th>
+            <th bgcolor="#7CF0F2">Commentaireaire</th>
+            <th bgcolor="#7CF0F2">Crée  le </th>
+            <th bgcolor="#7CF0F2">Action</th>
+        </tr>
+        <tbody >
+        {% for entity in entities %}
+            
+            <tr >
+                
+                <th>{{ entity.user }}</th>
+                <td>{{ entity.comment }}</td>
+                <td>{% if entity.created %}{{ entity.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('comment_show', { 'id': entity.id }) }}">Afficher</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('comment_edit', { 'id': entity.id }) }}">Modifier </a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('comment_new') }}">
+                Poster un commentaire
+            </a>
+        </li>
+    </ul>
+    

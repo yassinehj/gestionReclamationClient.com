@@ -1,0 +1,5 @@
+services:
+    redirect.after.login:
+        class: Grc\UserBundle\Redirection\AfterLoginRedirection
+        arguments: [@router]
+     

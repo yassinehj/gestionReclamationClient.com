@@ -1,0 +1,20 @@
+{% extends "GrcUserBundle::template_manager.html.twig" %}
+
+ 
+ {% block admin %}
+
+    <div class="form-style-6"> 
+    <h1>Affecter reclamation</h1>
+    <form  class="form-horizontal form-label-left" novalidate action="" method="post" {{form_enctype(form)}} >
+    {{form_widget(form)}}
+   
+     <button type="submit"  class="btn btn-primary"> Affecter </button></a>                
+             
+</form>
+    </div>
+
+{% endblock %}
+
+
+
+

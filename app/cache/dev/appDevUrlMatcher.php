@@ -122,44 +122,189 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // grc_user_list
-        if ($pathinfo === '/index') {
-            return array (  '_controller' => 'Grc\\UserBundle\\Controller\\UserController::indexAction',  '_route' => 'grc_user_list',);
+        if (0 === strpos($pathinfo, '/User')) {
+            // grc_user_list
+            if ($pathinfo === '/User/index') {
+                return array (  '_controller' => 'Grc\\UserBundle\\Controller\\UserController::indexAction',  '_route' => 'grc_user_list',);
+            }
+
+            // grc_admin_manager_list
+            if ($pathinfo === '/User/ListManager') {
+                return array (  '_controller' => 'Grc\\UserBundle\\Controller\\AdminController::ListManagerAction',  '_route' => 'grc_admin_manager_list',);
+            }
+
+            // grc_admin_manager_ajout
+            if ($pathinfo === '/User/ajoutManager') {
+                return array (  '_controller' => 'Grc\\UserBundle\\Controller\\AdminController::AjoutManagerAction',  '_route' => 'grc_admin_manager_ajout',);
+            }
+
+            // grc_admin_manager_update
+            if (0 === strpos($pathinfo, '/User/updateManager') && preg_match('#^/User/updateManager/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'grc_admin_manager_update')), array (  '_controller' => 'Grc\\UserBundle\\Controller\\AdminController::updateManagerAction',));
+            }
+
+            // grc_admin_manager_delete
+            if (0 === strpos($pathinfo, '/User/deleteManager') && preg_match('#^/User/deleteManager/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'grc_admin_manager_delete')), array (  '_controller' => 'Grc\\UserBundle\\Controller\\AdminController::deleteManagerAction',));
+            }
+
+            // grc_manager_collaborateur_list
+            if ($pathinfo === '/User/ListCollaborateur') {
+                return array (  '_controller' => 'Grc\\UserBundle\\Controller\\ManagerController::ListCollaborateurAction',  '_route' => 'grc_manager_collaborateur_list',);
+            }
+
+            // grc_manager_collaborateur_ajout
+            if ($pathinfo === '/User/ajoutCollaborateur') {
+                return array (  '_controller' => 'Grc\\UserBundle\\Controller\\ManagerController::AjoutCollaborateurAction',  '_route' => 'grc_manager_collaborateur_ajout',);
+            }
+
+            // grc_manager_collaborateur_delete
+            if (0 === strpos($pathinfo, '/User/deleteCollaborateur') && preg_match('#^/User/deleteCollaborateur/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'grc_manager_collaborateur_delete')), array (  '_controller' => 'Grc\\UserBundle\\Controller\\ManagerController::deleteCollaborateurAction',));
+            }
+
         }
 
-        // grc_admin_manager_list
-        if ($pathinfo === '/ListManager') {
-            return array (  '_controller' => 'Grc\\UserBundle\\Controller\\AdminController::ListManagerAction',  '_route' => 'grc_admin_manager_list',);
-        }
+        if (0 === strpos($pathinfo, '/reclamation')) {
+            // grc_reclamation_homepage
+            if (0 === strpos($pathinfo, '/reclamation/hello') && preg_match('#^/reclamation/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'grc_reclamation_homepage')), array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\DefaultController::indexAction',));
+            }
 
-        // grc_admin_manager_ajout
-        if ($pathinfo === '/ajoutManager') {
-            return array (  '_controller' => 'Grc\\UserBundle\\Controller\\AdminController::AjoutManagerAction',  '_route' => 'grc_admin_manager_ajout',);
-        }
+            if (0 === strpos($pathinfo, '/reclamation/list')) {
+                if (0 === strpos($pathinfo, '/reclamation/liste')) {
+                    // grc_reclamation_liste
+                    if ($pathinfo === '/reclamation/listeSujet') {
+                        return array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\ReclamationController::listAction',  '_route' => 'grc_reclamation_liste',);
+                    }
 
-        // grc_admin_manager_update
-        if (0 === strpos($pathinfo, '/updateManager') && preg_match('#^/updateManager/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'grc_admin_manager_update')), array (  '_controller' => 'Grc\\UserBundle\\Controller\\AdminController::updateManagerAction',));
-        }
+                    // grc_reclamation_liste_ejecter
+                    if ($pathinfo === '/reclamation/listejecter') {
+                        return array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\ReclamationController::listejecterAction',  '_route' => 'grc_reclamation_liste_ejecter',);
+                    }
 
-        // grc_admin_manager_delete
-        if (0 === strpos($pathinfo, '/deleteManager') && preg_match('#^/deleteManager/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'grc_admin_manager_delete')), array (  '_controller' => 'Grc\\UserBundle\\Controller\\AdminController::deleteManagerAction',));
-        }
+                }
 
-        // grc_manager_collaborateur_list
-        if ($pathinfo === '/ListCollaborateur') {
-            return array (  '_controller' => 'Grc\\UserBundle\\Controller\\ManagerController::ListCollaborateurAction',  '_route' => 'grc_manager_collaborateur_list',);
-        }
+                // grc_reclamation_liste_terminer
+                if ($pathinfo === '/reclamation/listterminer') {
+                    return array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\ReclamationController::listterminerAction',  '_route' => 'grc_reclamation_liste_terminer',);
+                }
 
-        // grc_manager_collaborateur_ajout
-        if ($pathinfo === '/ajoutCollaborateur') {
-            return array (  '_controller' => 'Grc\\UserBundle\\Controller\\ManagerController::AjoutCollaborateurAction',  '_route' => 'grc_manager_collaborateur_ajout',);
-        }
+                if (0 === strpos($pathinfo, '/reclamation/liste')) {
+                    // grc_reclamation_liste_cour
+                    if ($pathinfo === '/reclamation/listecour') {
+                        return array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\CollaborateurController::listecourAction',  '_route' => 'grc_reclamation_liste_cour',);
+                    }
 
-        // grc_manager_collaborateur_delete
-        if (0 === strpos($pathinfo, '/deleteCollaborateur') && preg_match('#^/deleteCollaborateur/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'grc_manager_collaborateur_delete')), array (  '_controller' => 'Grc\\UserBundle\\Controller\\ManagerController::deleteCollaborateurAction',));
+                    // grc_collaborateur_liste
+                    if ($pathinfo === '/reclamation/listeSujetaffecté') {
+                        return array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\CollaborateurController::listAction',  '_route' => 'grc_collaborateur_liste',);
+                    }
+
+                }
+
+            }
+
+            // reclamation_ajoutSujet
+            if ($pathinfo === '/reclamation/ajoutSujet') {
+                return array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\ReclamationController::ajoutAction',  '_route' => 'reclamation_ajoutSujet',);
+            }
+
+            if (0 === strpos($pathinfo, '/reclamation/update')) {
+                // reclamation_updateSujet
+                if (0 === strpos($pathinfo, '/reclamation/updateSujet') && preg_match('#^/reclamation/updateSujet/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'reclamation_updateSujet')), array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\ReclamationController::updateAction',));
+                }
+
+                // reclamation_updatecloturer
+                if (0 === strpos($pathinfo, '/reclamation/updatecloturer') && preg_match('#^/reclamation/updatecloturer/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                    return $this->mergeDefaults(array_replace($matches, array('_route' => 'reclamation_updatecloturer')), array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\ReclamationController::updatecloturerAction',));
+                }
+
+            }
+
+            // reclamation_ejecter
+            if (0 === strpos($pathinfo, '/reclamation/ejecter') && preg_match('#^/reclamation/ejecter/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'reclamation_ejecter')), array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\CollaborateurController::updateAction',));
+            }
+
+            // reclamation_terminer
+            if (0 === strpos($pathinfo, '/reclamation/terminer') && preg_match('#^/reclamation/terminer/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'reclamation_terminer')), array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\CollaborateurController::updateterminerAction',));
+            }
+
+            // reclamation_showSujet
+            if (preg_match('#^/reclamation/(?P<id>[^/]++)/Sujetshow$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'reclamation_showSujet')), array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\ReclamationController::showAction',));
+            }
+
+            // reclamation_showSujetterminer
+            if (preg_match('#^/reclamation/(?P<id>[^/]++)/Sujetshowterminer$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'reclamation_showSujetterminer')), array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\ReclamationController::showterminerAction',));
+            }
+
+            // reclamation_showSujet_cour
+            if (preg_match('#^/reclamation/(?P<id>[^/]++)/Sujetshowcour$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'reclamation_showSujet_cour')), array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\CollaborateurController::showcourAction',));
+            }
+
+            // reclamation_showSujet_affecter
+            if (preg_match('#^/reclamation/(?P<id>[^/]++)/Sujetshowaffecter$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'reclamation_showSujet_affecter')), array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\CollaborateurController::showAction',));
+            }
+
+            // commentaire
+            if ($pathinfo === '/reclamation/index') {
+                return array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\CommentaireController::indexAction',  '_route' => 'commentaire',);
+            }
+
+            // commentaire_show
+            if (preg_match('#^/reclamation/(?P<id>[^/]++)/show$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'commentaire_show')), array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\CommentaireController::showAction',));
+            }
+
+            // commentaire_new
+            if ($pathinfo === '/reclamation/new') {
+                return array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\CommentaireController::newAction',  '_route' => 'commentaire_new',);
+            }
+
+            // commentaire_create
+            if (preg_match('#^/reclamation/(?P<id>[^/]++)/create$#s', $pathinfo, $matches)) {
+                if ($this->context->getMethod() != 'POST') {
+                    $allow[] = 'POST';
+                    goto not_commentaire_create;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'commentaire_create')), array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\CommentaireController::createAction',));
+            }
+            not_commentaire_create:
+
+            // commentaire_ajouter
+            if (preg_match('#^/reclamation/(?P<id>[^/]++)/ajouter$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'commentaire_ajouter')), array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\CommentaireController::ajoutAction',));
+            }
+
+            // commentaire_edit
+            if (preg_match('#^/reclamation/(?P<id>[^/]++)/edit$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'commentaire_edit')), array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\CommentaireController::editAction',));
+            }
+
+            // commentaire_update
+            if (preg_match('#^/reclamation/(?P<id>[^/]++)/update$#s', $pathinfo, $matches)) {
+                if (!in_array($this->context->getMethod(), array('POST', 'PUT'))) {
+                    $allow = array_merge($allow, array('POST', 'PUT'));
+                    goto not_commentaire_update;
+                }
+
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'commentaire_update')), array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\CommentaireController::updateAction',));
+            }
+            not_commentaire_update:
+
+            // commentaire_delete
+            if (preg_match('#^/reclamation/(?P<id>[^/]++)/delete$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'commentaire_delete')), array (  '_controller' => 'Grc\\ReclamationBundle\\Controller\\CommentaireController::suppressionAction',));
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/log')) {
