@@ -1,0 +1,26 @@
+{% extends "GrcUserBundle::template_manager.html.twig" %}
+{% form_theme form ":FormTemplate:adminForm.html.twig" %}
+{% block admin %}
+    <div class="">
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+
+                    <div class="x_content">
+                        <h1>Ajouter Client</h1>
+                        <form action='' {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+                            {{ form_widget(form) }}
+                            <div>
+                                <input type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}" class="btn btn-primary" />
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

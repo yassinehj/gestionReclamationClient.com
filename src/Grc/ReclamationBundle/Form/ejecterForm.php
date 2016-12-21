@@ -14,7 +14,7 @@ class ejecterForm extends AbstractType
         
         $builder->add('sujet');
         
-        $builder->add('titre', 'choice', array(
+        $builder->add('etat', 'choice', array(
     'choices'   => array('ejectée' => 'Ejectée','en cours' => 'En cours'),
     'required'  => true,
 ));

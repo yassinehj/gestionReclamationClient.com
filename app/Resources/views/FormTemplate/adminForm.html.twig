@@ -11,15 +11,21 @@
     <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %} class="form-control"/>
 {%- endblock form_widget_simple -%}
 
-{%- block choice_widget_collapsed -%}
+{%- block choice_widget_collapsed  -%}
 
-    <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %} style="visibility: hidden">
+    {%- block form_label -%}
+        {% if label is not same as(false) -%}
+
+            <label{% for attrname, attrvalue in label_attr %} {{ attrname }}="{{ attrvalue }}"{% endfor %}>{{ translation_domain is same as(false) ? label : label|trans({}, translation_domain) }}</label>
+        {%- endif -%}
+    {%- endblock form_label -%}
+    <select {{ block('widget_attributes') }} {% if multiple %} multiple="multiple"{% endif %}  style="visibility: hidden">
 
         {%- if preferred_choices|length > 0 -%}
             {% set options = preferred_choices %}
             {{- block('choice_widget_options') -}}
             {%- if choices|length > 0 and separator is not none -%}
-                <option disabled="disabled">{{ separator }}</option>
+                <option  disabled="disabled">{{ separator }}</option>
             {%- endif -%}
         {%- endif -%}
         {%- set options = choices -%}

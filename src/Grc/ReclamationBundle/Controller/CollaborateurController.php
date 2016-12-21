@@ -17,8 +17,8 @@ class CollaborateurController extends Controller {
         
        
            $query = $this->getDoctrine()->getEntityManager()
-    ->createQuery('SELECT u FROM GrcReclamationBundle:Reclamation u WHERE u.titre LIKE :titre'
-    )->setParameter('titre', 'Affectée' );
+    ->createQuery('SELECT u FROM GrcReclamationBundle:Reclamation u WHERE u.etat LIKE :etat'
+    )->setParameter('etat', 'Affectée' );
     $reclamation = $query->getResult();
       
         return $this->render('GrcReclamationBundle:Collaborateur:listeSujet.html.twig', array(
@@ -31,8 +31,8 @@ class CollaborateurController extends Controller {
         
        
            $query = $this->getDoctrine()->getEntityManager()
-    ->createQuery('SELECT u FROM GrcReclamationBundle:Reclamation u WHERE u.titre LIKE :titre'
-    )->setParameter('titre', 'en cours' );
+    ->createQuery('SELECT u FROM GrcReclamationBundle:Reclamation u WHERE u.etat LIKE :etat'
+    )->setParameter('etat', 'en cours' );
     $reclamation = $query->getResult();
       
         return $this->render('GrcReclamationBundle:Collaborateur:listeSujetcour.html.twig', array(

@@ -10,15 +10,13 @@ use Grc\ReclamationBundle\Form\cloturerForm;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class ReclamationController extends Controller {
-    
-    
+
+
      public function listAction()
     {
-        
-       
            $query = $this->getDoctrine()->getEntityManager()
-    ->createQuery('SELECT u FROM GrcReclamationBundle:Reclamation u WHERE u.titre LIKE :titre'
-    )->setParameter('titre', 'reçu' );
+    ->createQuery('SELECT u FROM GrcReclamationBundle:Reclamation u WHERE u.etat LIKE :etat'
+    )->setParameter('etat', 'reçu' );
     $reclamation = $query->getResult();
       
         return $this->render('GrcReclamationBundle:Reclamation:listeSujet.html.twig', array(
@@ -28,11 +26,9 @@ class ReclamationController extends Controller {
     }
       public function listejecterAction()
     {
-        
-       
            $query = $this->getDoctrine()->getEntityManager()
-    ->createQuery('SELECT u FROM GrcReclamationBundle:Reclamation u WHERE u.titre LIKE :titre'
-    )->setParameter('titre', 'ejectée' );
+    ->createQuery('SELECT u FROM GrcReclamationBundle:Reclamation u WHERE u.etat LIKE :etat'
+    )->setParameter('etat', 'ejectée' );
     $reclamation = $query->getResult();
       
         return $this->render('GrcReclamationBundle:Reclamation:listejecter.html.twig', array(
@@ -46,8 +42,8 @@ class ReclamationController extends Controller {
         
        
            $query = $this->getDoctrine()->getEntityManager()
-    ->createQuery('SELECT u FROM GrcReclamationBundle:Reclamation u WHERE u.titre LIKE :titre'
-    )->setParameter('titre', 'terminée' );
+    ->createQuery('SELECT u FROM GrcReclamationBundle:Reclamation u WHERE u.etat LIKE :etat'
+    )->setParameter('etat', 'terminée' );
     $reclamation = $query->getResult();
       
         return $this->render('GrcReclamationBundle:Reclamation:listterminer.html.twig', array(
@@ -58,7 +54,7 @@ class ReclamationController extends Controller {
     
      public function ajoutAction()
     {
-        
+        $objUser = $this->get('security.context')->getToken()->getUser();
          $reclamation = new Reclamation();
         $form = $this->container->get('form.factory')->create(new ajoutSujetForm(), $reclamation);
         
@@ -71,17 +67,27 @@ class ReclamationController extends Controller {
               $em = $this->container->get('doctrine')->getEntityManager();
               $em->persist($reclamation);
               $em->flush();
-              return $this->redirect($this->generateUrl("grc_reclamation_liste"));
+              return $this->redirect($this->generateUrl("grc_reclamation_liste_client"));
             }
         }
         
-        return $this->render('GrcReclamationBundle:Reclamation:ajoutSujet.html.twig',  array('Form'=>$form->createView()));
+        return $this->render('GrcReclamationBundle:Reclamation:ajoutSujet.html.twig',  array('Form'=>$form->createView(),'user'=>$objUser));
         
         
         
     }
-    
-    
+
+    public function listreclamationclientAction() {
+
+        $query = $this->getDoctrine()->getEntityManager()
+            ->createQuery("SELECT R FROM GrcReclamationBundle:Reclamation R WHERE R.utilisateur='client'"
+            );
+        $reclamation = $query->getResult();
+
+        return $this->render('GrcReclamationBundle:Reclamation:Listreclamationclient.html.twig', array(
+            'rec'=>$reclamation
+        ));
+    }
     public function showAction($id)
     {
         $em = $this->getDoctrine()->getManager();

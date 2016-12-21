@@ -16,17 +16,33 @@ class User extends BaseUser
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-    
-    public function getParent() {
-        return 'FOSUserBundle';
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Grc\UserBundle\Entity\Service", cascade={"persist","remove"})
+     *
+     */
+    protected $idService;
+    /**
+     * @return mixed
+     */
+    public function getIdService()
+    {
+        return $this->idService;
     }
 
+    /**
+     * @param mixed $idService
+     */
+    public function setIdService($idService)
+    {
+        $this->idService = $idService;
+    }
     public function __construct()
     {
         parent::__construct();
         // your own logic
     }
+
     
    
 }

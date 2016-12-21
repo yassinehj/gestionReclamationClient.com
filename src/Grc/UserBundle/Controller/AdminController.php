@@ -2,11 +2,12 @@
 
 namespace Grc\UserBundle\Controller;
 
+use Grc\UserBundle\Entity\Service;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FOS\UserBundle\Entity\User as BaseUser;
 use Grc\UserBundle\Entity\User;
-use Grc\UserBundle\Form\UserType;
+use Grc\UserBundle\Form\ManagerType;
 
 /**
  * User controller.
@@ -33,8 +34,11 @@ class AdminController extends Controller
 
     public function AjoutManagerAction()
     {
+        //$service= new Service();
         $user = new User();
-        $form = $this->container->get('form.factory')->create(new UserType(), $user);
+        //$em1 = $this->getDoctrine()->getManager();
+       // $serv=$em1->getRepository('GrcUserBundle:Service')->findAll();
+        $form = $this->container->get('form.factory')->create(new ManagerType(), $user);
 
         $Request = $this->getRequest();
         if($Request->getMethod()=="POST")
@@ -56,7 +60,7 @@ class AdminController extends Controller
     {
         $em=$this->container->get('doctrine')->getEntityManager();
         $user = $em->getRepository('GrcUserBundle:User')->find($id);
-        $form = $this->container->get('form.factory')->create(new UserType(), $user);
+        $form = $this->container->get('form.factory')->create(new ManagerType(), $user);
         $Request = $this->getRequest();
         if($Request->getMethod()=="POST")
         {

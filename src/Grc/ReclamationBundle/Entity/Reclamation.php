@@ -31,9 +31,9 @@ class Reclamation
     /**
      * @var string
      *
-     * @ORM\Column(name="titre", type="string", length=255)
+     * @ORM\Column(name="etat", type="string", length=255)
      */
-    private $titre;
+    private $etat;
 
     /**
      * @var string
@@ -48,9 +48,10 @@ class Reclamation
      * @ORM\Column(name="reclamation", type="string", length=255)
      */
     private $reclamation;
-
-   
-    
+    /**
+     *@ORM\OneToOne(targetEntity="Grc\UserBundle\Entity\User", cascade={"persist","remove"})
+     */
+    private $collaborateur;
 
     /**
      * @var \DateTime
@@ -118,9 +119,9 @@ class Reclamation
      * @param string $titre
      * @return Reclamation
      */
-    public function setTitre($titre)
+    public function setEtat($etat)
     {
-        $this->titre = $titre;
+        $this->etat = $etat;
 
         return $this;
     }
@@ -130,9 +131,9 @@ class Reclamation
      *
      * @return string 
      */
-    public function getTitre()
+    public function getEtat()
     {
-        return $this->titre;
+        return $this->etat;
     }
 
     /**
@@ -202,5 +203,20 @@ class Reclamation
     public function getCreation()
     {
         return $this->creation;
+    }
+    /**
+     * @return mixed
+     */
+    public function getCollaborateur()
+    {
+        return $this->collaborateur;
+    }
+
+    /**
+     * @param mixed $collaborateur
+     */
+    public function setCollaborateur($collaborateur)
+    {
+        $this->collaborateur = $collaborateur;
     }
 }

@@ -10,7 +10,7 @@
                       <div class="page-title">
               <div class="title_left">
                   <div class="col-md-5 col-sm-5 col-xs-12 ">
-                <a href="{{path('grc_manager_collaborateur_ajout')}}"><button type="button" value="Ajouter" class="btn btn-primary"> Ajouter  <i class="fa fa-plus-square" /></i></button></a>
+                <a href="{{path('grc_manager_client_ajout')}}"><button type="button" value="Ajouter" class="btn btn-primary"> Ajouter  <i class="fa fa-plus-square" /></i></button></a>
                   </div>
               </div>
 
@@ -36,7 +36,7 @@
 
               <div class="x_panel" style="">
                   <div class="x_title">
-                    <h2>List des collaborateurs</h2>
+                    <h2>List des clients</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       
                       
@@ -69,8 +69,8 @@
                           <td>{{ com.roles[0] }}</td>
                           <td>
                               <button class="btn bg-light-blue " data-toggle="modal" data-target="#addUserForm"><i class="fa fa-eye"></i></button>
-                              <a href="{{path("grc_manager_collaborateur_update", {'id':com.id} )}}"><button class="btn bg-green "><i class="fa fa-edit"></i> </button></a>
-                              <a href="{{path("grc_manager_collaborateur_delete", {'id':com.id} )}}" onclick="return confirm('Are you sure?')" ><button class="btn bg-red " ><i class="fa fa-trash-o"></i> </button></a>
+                              <a href="{{path("grc_manager_client_update", {'id':com.id} )}}"><button class="btn bg-green "><i class="fa fa-edit"></i> </button></a>
+                              <a href="{{path("grc_manager_client_delete", {'id':com.id} )}}" onclick="return confirm('Are you sure?')" ><button class="btn bg-red " ><i class="fa fa-trash-o"></i> </button></a>
                           </td>
                         </tr>
                         {% endfor %}

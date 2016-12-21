@@ -16,6 +16,7 @@ grc_admin_manager_delete:
     path: /deleteManager/{id}
     defaults: { _controller: GrcUserBundle:Admin:deleteManager }
 #manager routing
+  #collaborateur routing
 grc_manager_collaborateur_list:
     path:     /ListCollaborateur
     defaults: { _controller: GrcUserBundle:Manager:ListCollaborateur }
@@ -25,3 +26,19 @@ grc_manager_collaborateur_ajout:
 grc_manager_collaborateur_delete:
     path: /deleteCollaborateur/{id}
     defaults: { _controller: GrcUserBundle:Manager:deleteCollaborateur }
+grc_manager_collaborateur_update:
+    path: /updateCollaborateur/{id}
+    defaults: { _controller: GrcUserBundle:Manager:updateCollaborateur }
+  #client routing
+grc_manager_client_list:
+    path:     /ListClient
+    defaults: { _controller: GrcUserBundle:Manager:ListClient }
+grc_manager_client_ajout:
+    path: /ajoutClient
+    defaults: { _controller: GrcUserBundle:Manager:AjoutClient }
+grc_manager_client_delete:
+    path: /deleteClient/{id}
+    defaults: { _controller: GrcUserBundle:Manager:deleteClient }
+grc_manager_client_update:
+    path: /updateClient/{id}
+    defaults: { _controller: GrcUserBundle:Manager:updateClient }

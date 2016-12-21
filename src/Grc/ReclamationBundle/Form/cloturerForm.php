@@ -14,7 +14,7 @@ class cloturerForm extends AbstractType
         
         $builder->add('sujet');
         
-        $builder->add('titre', 'choice', array(
+        $builder->add('etat', 'choice', array(
     'choices'   => array('cloturée' => 'Cloturée'),
     'required'  => true,
 ));

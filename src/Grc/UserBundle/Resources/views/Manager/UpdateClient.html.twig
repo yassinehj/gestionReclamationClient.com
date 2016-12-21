@@ -1,0 +1,32 @@
+{% extends "GrcUserBundle::base.html.twig" %}
+{% form_theme form ":FormTemplate:adminForm.html.twig" %}
+ 
+ {% block admin %}
+     <div class="">
+
+         <div class="clearfix"></div>
+
+         <div class="row">
+             <div class="col-md-12 col-sm-12 col-xs-12">
+                 <div class="x_panel">
+
+                     <div class="x_content">
+                         <h1>Modifier Client</h1>
+                         <form  action="" method="post" {{form_enctype(form)}} >
+                             {{form_widget(form)}}
+
+                             <button type="submit"  class="btn btn-primary"> Enregistrer </button>
+
+                         </form>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+
+{% endblock %}
+
+
+
+

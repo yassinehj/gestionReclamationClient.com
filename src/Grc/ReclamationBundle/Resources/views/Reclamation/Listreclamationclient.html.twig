@@ -1,0 +1,46 @@
+{% extends "GrcUserBundle::template_client.html.twig" %}
+ {% block body %}
+     {{parent()}} 
+ {% endblock %}
+     {% block admin %}
+  
+<center>
+      <div class="col-md-12 col-sm-12 col-xs-12">
+            
+    
+
+              <div class="x_panel" style="">
+                  <div class="x_title">
+                    <h2>Details reclamation</h2>
+
+                  </div>
+                  <div class="x_content">
+
+           <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action">
+                <tr>
+                   <td> Sujet</td>
+                   <td> Etat </td>
+                   <td> Utilisateur </td>
+                    <td>Reclamation</td>
+                    <td>Le</td>
+                </tr>
+               {% for reclamation in rec %}
+                <tr>
+                    <td>{{ reclamation.sujet }}</td>
+                    <td>{{ reclamation.etat }}</td>
+                    <td>{{ reclamation.utilisateur }}</td>
+                    <td>{{ reclamation.reclamation }}</td>
+                    <td> {{ reclamation.creation|date('d/m/Y') }}</td>
+                </tr>
+               {% endfor %}
+         </table>
+                 </div>
+                </div>
+          </div>
+    </center>
+
+
+  
+                        {% endblock %}
+                        
+                   

@@ -1,18 +1,4 @@
-{#<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
-</html>
----------
-#}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -61,7 +47,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2>{{ app.user.username }}</h2>
                
               </div>
             </div>
@@ -74,7 +60,7 @@
               <div class="menu_section">
                 <h3>Administrateur</h3>
                 <ul class="nav side-menu">
-                    <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Profil </a></li>
+                    {#<li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Profil </a></li>#}
                   <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Gestion manager </a></li>
                   
                 </ul>

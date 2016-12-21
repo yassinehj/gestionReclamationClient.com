@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ManagerType extends AbstractType
+class ClientType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options) {
 
@@ -20,19 +20,15 @@ class ManagerType extends AbstractType
                 'second_options' => array('label' => 'form.password_confirmation'),
                 'invalid_message' => 'fos_user.password.mismatch',
             ))
-
             ->add('roles', 'collection', array(
                    'type' => 'choice',
                    'options' => array(
                        'choices' => array(
-                           'ROLE_MANAGER' => 'Manager')
+                           'ROLE_CLIENT' => 'Client',
+                       )
                    )
-                   )
-                   )
-//            ->add('idService', 'idService', array('label' => 'idService   :', 'translation_domain' => 'FOSUserBundle'))
-            ->add('idService')
-
-
+               )
+           )
         ;
     }
 

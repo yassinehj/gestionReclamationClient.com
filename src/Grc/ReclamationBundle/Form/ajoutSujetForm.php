@@ -14,7 +14,7 @@ class ajoutSujetForm extends AbstractType
         
         $builder->add('sujet');
         
-        $builder->add('titre', 'choice', array(
+        $builder->add('etat', 'choice', array(
     'choices'   => array('reçu' => 'Reçu'),
     'required'  => true,
 ));

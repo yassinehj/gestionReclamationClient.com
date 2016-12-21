@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class UserType extends AbstractType
+class CollaborateurType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options) {
 
@@ -24,7 +24,7 @@ class UserType extends AbstractType
                    'type' => 'choice',
                    'options' => array(
                        'choices' => array(
-                           'ROLE_MANAGER' => 'Manager',
+                           'ROLE_COLLABORATEUR' => 'Collaborateur',
                        )
                    )
                )

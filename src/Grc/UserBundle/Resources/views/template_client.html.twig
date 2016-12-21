@@ -47,7 +47,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>Client</h2>
+                <h2>{{ app.user.username }}</h2>
                
               </div>
             </div>
@@ -60,16 +60,11 @@
               <div class="menu_section">
                 <h3>Client</h3>
                 <ul class="nav side-menu">
-                    <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Profil </a></li>
-                    
+                    <li><a href="{{path('reclamation_ajoutSujet')}}"><i class="fa fa-laptop"></i> Passer reclamation </a></li>
+                    <li><a href="{{path('grc_reclamation_liste_client')}}"><i class="fa fa-laptop"></i> Afficher reclamations </a></li>
+
                  
-                    <li><a><i class="fa fa-home"></i> Passer reclamation <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      
-                      <li><a href="{{path('reclamation_ajoutSujet')}}">Passer reclamation</a></li>
-                       
-                    </ul>
-                  </li>                
+
                 </ul>
               </div>
             </div>

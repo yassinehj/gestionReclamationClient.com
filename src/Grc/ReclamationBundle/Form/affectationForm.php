@@ -14,11 +14,13 @@ class affectationForm extends AbstractType
         
         $builder->add('sujet');
         
-        $builder->add('titre', 'choice', array(
+        $builder->add('etat', 'choice', array(
     'choices'   => array('Affectée' => 'Affectée'),
     'required'  => true,
 ));
+
         $builder->add('utilisateur');
+        $builder->add('collaborateur');
         $builder->add('reclamation','textarea');
         
        

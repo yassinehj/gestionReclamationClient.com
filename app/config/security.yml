@@ -4,11 +4,11 @@ security:
         FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
-        ROLE_MANAGER: ROLE_MANAGER
+        ROLE_CLIENT: ROLE_USER
+        ROLE_MANAGER: ROLE_USER
         ROLE_ADMIN:       ROLE_USER
         ROLE_SUPER_ADMIN: ROLE_ADMIN
-        ROLE_CLIENT: ROLE_MANAGER
-        ROLE_COLLABORATEUR: ROLE_MANAGER
+        ROLE_COLLABORATEUR: ROLE_USER
 
     providers:
         fos_userbundle:
@@ -36,11 +36,12 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/index, role: ROLE_ADMIN }
         - { path: ^/ListManager, role: ROLE_ADMIN }
+        - { path: ^/updateManager, role: ROLE_ADMIN }
+        - { path: ^/deleteManager, role: ROLE_ADMIN }
         - { path: ^/ajoutCollaborateur, role: ROLE_MANAGER }
-        - { path: ^/update, role: ROLE_ADMIN }
-        - { path: ^/delete, role: ROLE_ADMIN }
-        - { path: ^/ListCollaborateur, role: ROLE_MANAGER }
         - { path: ^/deleteCollaborateur, role: ROLE_MANAGER }
-        - { path: ^/reclamation, role: ROLE_MANAGER }
+#        - { path: ^/reclamation, role: ROLE_MANAGER }
         - { path: ^/ajoutSujet, role: ROLE_CLIENT }
-     
+        - { path: ^/listeReclamationClient, role: ROLE_CLIENT }
+        - { path: ^/updateCollaborateur, role: ROLE_MANAGER }
+        - { path: ^/ListCollaborateur, role: ROLE_MANAGER }

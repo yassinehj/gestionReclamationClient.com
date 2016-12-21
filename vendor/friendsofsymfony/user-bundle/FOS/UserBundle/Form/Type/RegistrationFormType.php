@@ -51,6 +51,7 @@ class RegistrationFormType extends AbstractType
                    )
                )
            )
+             ->add('idService', 'idService', array('label' => 'idService   :', 'translation_domain' => 'FOSUserBundle'))
         ;
     }
 

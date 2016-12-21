@@ -4,6 +4,9 @@ grc_reclamation_homepage:
 grc_reclamation_liste:
     pattern:  /listeSujet
     defaults: { _controller: GrcReclamationBundle:Reclamation:list}
+grc_reclamation_liste_client:
+    pattern:  /listeReclamationClient
+    defaults: { _controller: GrcReclamationBundle:Reclamation:listreclamationclient}
 grc_reclamation_liste_ejecter:
     pattern:  /listejecter
     defaults: { _controller: GrcReclamationBundle:Reclamation:listejecter}
